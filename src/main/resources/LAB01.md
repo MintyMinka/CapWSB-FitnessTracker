@@ -1,4 +1,4 @@
-# LABORATORIUM 01
+j# LABORATORIUM 01
 
 Zadania proszę realizować zgodnie z własnym tempem. Zadania mają pomóc w przygotowaniu do Egzaminu oraz zrozumieniu Frameworka Spring.
 

@@ -2,6 +2,7 @@ package com.capgemini.wsb.fitnesstracker.user.internal;
 
 import com.capgemini.wsb.fitnesstracker.user.api.User;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -70,6 +71,7 @@ class UserController {
 
     // dodanie użytkownika
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public User addUser(@RequestBody UserDto userDto) throws InterruptedException {
 
         // TODO: saveUser with Service and return User
@@ -88,6 +90,7 @@ class UserController {
 
     // usuwanie użytkownika o podanym id
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUser(@PathVariable Long id) {
         try {
             userService.deleteUser(id);

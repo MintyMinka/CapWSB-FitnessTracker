@@ -55,7 +55,7 @@ class UserApiIntegrationTest extends IntegrationTestBase {
         User user1 = existingUser(generateUser());
         User user2 = existingUser(generateUser());
 
-        mockMvc.perform(get("/v1/users/simple").contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/v1/users/basics").contentType(MediaType.APPLICATION_JSON))
                 .andDo(log())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
@@ -117,7 +117,7 @@ class UserApiIntegrationTest extends IntegrationTestBase {
         User user1 = existingUser(generateUser());
 
 
-        mockMvc.perform(delete("/v1/users/{userId}", user1.getId())
+        mockMvc.perform(delete("/v1/users/{id}", user1.getId())
                         .contentType(MediaType.APPLICATION_JSON))
                 .andDo(log())
                 .andExpect(status().isNoContent());

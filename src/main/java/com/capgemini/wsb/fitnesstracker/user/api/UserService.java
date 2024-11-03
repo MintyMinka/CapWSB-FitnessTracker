@@ -9,8 +9,10 @@ public interface UserService {
     // tworzenie nowego użytkownika
     User createUser(User user);
 
-
     // usuwanie użytkownika
     void deleteUser(Long id);
+
+    //aktualizowanie użytkownika
+    User updateUser(User user);
 
 }

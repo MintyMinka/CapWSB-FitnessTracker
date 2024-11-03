@@ -65,4 +65,14 @@ class UserServiceImpl implements UserService, UserProvider {
     public List<User> getUserByEmailIgnoreCase(final String email) {
         return userRepository.findUsersByFragmentIgnoreCase(email);
     }
+
+    // aktualizowanie użytkownika
+    @Override
+    public User updateUser(final User user) {
+        log.info("Updating User {}", user);
+        if (user.getId() == null) {
+            throw new IllegalArgumentException("User not specified, update is not permitted!");
+        }
+        return userRepository.save(user);
+    }
 }

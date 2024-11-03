@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,9 +22,20 @@ class UserServiceImpl implements UserService, UserProvider {
     public User createUser(final User user) {
         log.info("Creating User {}", user);
         if (user.getId() != null) {
-            throw new IllegalArgumentException("User has already DB ID, update is not permitted!");
+            throw new IllegalArgumentException("User has already DB ID, create is not permitted!");
         }
         return userRepository.save(user);
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+
+        if (id == null) {
+            throw new IllegalArgumentException("User not specified, deleting is not permitted!");
+        }
+        log.info("Deleting User {}", id);
+        userRepository.deleteById(id);
+
     }
 
     @Override
@@ -36,9 +48,21 @@ class UserServiceImpl implements UserService, UserProvider {
         return userRepository.findByEmail(email);
     }
 
+
     @Override
     public List<User> findAllUsers() {
         return userRepository.findAll();
     }
 
+    // zwracanie użytkownika starszego niż podana data
+    @Override
+    public List<User> getOlderUser(final LocalDate birthDate) {
+        return userRepository.findUserOlderThanDate(birthDate);
+    }
+
+    // zwracanie użytkownika, do którego pasuje framgnet emaila z pominięciem wielkosci liter
+    @Override
+    public List<User> getUserByEmailIgnoreCase(final String email) {
+        return userRepository.findUsersByFragmentIgnoreCase(email);
+    }
 }

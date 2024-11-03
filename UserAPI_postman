@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "835b6ad4-3476-4f4a-b391-3edf5ed205d7",
+		"name": "User API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "39457191"
+	},
+	"item": [
+		{
+			"name": "http://localhost:1111/v1/users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:1111/v1/users"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1111/v1/users/basics",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:1111/v1/users/basics"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1111/v1/users/3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:1111/v1/users/3"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1111/v1/users/older/1986-10-01",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:1111/v1/users/older/1986-10-01"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1111/v1/users/email?email=taylor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:1111/v1/users/email?email=taylor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1111",
+					"path": [
+						"v1",
+						"users",
+						"email"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "taylor"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1111/v1/users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Madeline\",\r\n    \"lastName\": \"Doe\",\r\n    \"birthdate\": \"1998-06-05\",\r\n    \"email\": \"maddie.doe@domain.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:1111/v1/users",
+				"description": "Dodanie nowego usera"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1111/v1/users/12",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:1111/v1/users/12"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:1111/v1/users/3",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"Olivia.Davis@example.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:1111/v1/users/3"
+			},
+			"response": []
+		}
+	]
+}

@@ -96,4 +96,17 @@ class UserController {
                     + id + " with exception " + e.getMessage());
         }
     }
+
+    // aktualizowanie użytkownika
+    @PutMapping("/{id}")
+    public User updateUser(@PathVariable Long id, @RequestBody UserDto userDto) {
+        try {
+            User givenUser = userService.getUser(id).orElseThrow(() -> new IllegalArgumentException("User with ID: " + id + " not found"));
+            User updatedUser = userMapper.toUpdatedEntity(userDto, givenUser);
+            return userService.updateUser(updatedUser);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Cannot update user with ID: " + id + " with exception " + e.getMessage());
+        }
+    }
 }
+

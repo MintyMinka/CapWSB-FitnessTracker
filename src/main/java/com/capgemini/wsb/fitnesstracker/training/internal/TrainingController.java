@@ -2,8 +2,10 @@ package com.capgemini.wsb.fitnesstracker.training.internal;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.YearMonth;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import java.util.List;
 class TrainingController {
     private final TrainingServiceImpl trainingService;
     private final TrainingMapper trainingMapper;
+    private final ReportService reportService;
 
     @GetMapping
     public List<TrainingDto> getAllTrainings() {
@@ -44,5 +47,11 @@ class TrainingController {
                 .stream()
                 .map(trainingMapper::toDto).
                 toList();
+    }
+
+    @PostMapping("/report")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void generateTrainingsReportForUsers(@RequestParam @DateTimeFormat(pattern = "yyyy-MM") YearMonth yearMonth) {
+        reportService.generateReport(yearMonth);
     }
 }

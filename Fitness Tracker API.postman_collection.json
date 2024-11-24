@@ -102,6 +102,31 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Generate report",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/trainings/report?yearMonth=2024-01",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"trainings",
+								"report"
+							],
+							"query": [
+								{
+									"key": "yearMonth",
+									"value": "2024-01"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

@@ -54,23 +54,30 @@ class TrainingController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public TrainingDto addNewTraining(@RequestBody TrainingDto training) {
-        Training trainingEntity = trainingMapper.toEntity(training);
+    public TrainingDto addNewTraining(@RequestBody TrainingDtoUID training) {
+
+        Training trainingEntity = trainingMapper.toEntity1(training);
         Training savedTraining = trainingServiceAPI.createTraining(trainingEntity);
         return trainingMapper.toDto(savedTraining);
     }
 
 
     @PutMapping("/{id}")
-    public TrainingDto updateTraining(@PathVariable Long id, @RequestBody TrainingDto trainingDto) {
-        Training correctedTraining = trainingServiceAPI.updateTraining(id, trainingMapper.toEntity(trainingDto));
-        return trainingMapper.toDto(correctedTraining);
+    public TrainingDto updateTraining(@PathVariable Long id, @RequestBody TrainingDtoUID trainingDto) {
+
+        Training trainingToUpdate = trainingMapper.toEntity1(trainingDto);
+
+        Training updatedTraining = trainingServiceAPI.updateTraining(id, trainingToUpdate);
+
+        return trainingMapper.toDto(updatedTraining);
     }
 
     @PatchMapping("/{id}")
     public TrainingDto partiallyUpdateTraining(@PathVariable Long id, @RequestBody Map<String, Object> update) {
-        Training correctedTraining = trainingServiceAPI.partiallyUpdateTraining(id, update);
-        return trainingMapper.toDto(correctedTraining);
+
+        Training updatedTraining  = trainingServiceAPI.partiallyUpdateTraining(id, update);
+
+        return trainingMapper.toDto(updatedTraining );
     }
 
 }

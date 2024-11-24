@@ -20,8 +20,8 @@ Stworzone API powinno pozwalać na:
 - [x] wyszukiwanie treningów dla określonego Użytkownika:
 - [x] wyszukiwanie wszystkich treningów zakończonych (po konkretnej zdefiniowanej dacie)
 - [x] wyszukiwanie wszystkich treningów dla konkretnej aktywności (np. wszystkie treningi biegowe)
-- [ ] utworzenie nowego treningu
-- [ ] aktualizacja treningu (dowolnie wybrane pole np. dystans)
+- [x] utworzenie nowego treningu
+- [x] aktualizacja treningu (dowolnie wybrane pole np. dystans)
 
 ### Wymagania techniczne
 
@@ -30,11 +30,11 @@ Stworzone API powinno pozwalać na:
   domyślne, pobierające dane za pomocą `findAll()` oraz przetwarzające je za pomocą strumieni (`Stream`). Przykład
   znaleźć można w `UserRepository`
 - [x] rozwiązanie powinno spełniać zasady SOLID
-- [ ] testy integracyjne powinny poprawnie się wykonywać TrainingApiIntegrationTest
+- [x] testy integracyjne powinny poprawnie się wykonywać TrainingApiIntegrationTest
 - [ ] (OPCJONALNIE) rozwiązanie powinno być pokryte testami jednostkowymi (>80%)
 - [x] rozwiązanie powinno być odpowiednio zhermetyzowane (nie udostępniać funkcjonalności pozostałym pakietom programu)
 - [ ] kod powinien być odpowiednio udokumentowany za pomocą JavaDoc
-- [ ] do kodu powinna zostać dołączona wyeksportowana kolekcja zapytań z programu Postman, pozwalająca przetestować
+- [x] do kodu powinna zostać dołączona wyeksportowana kolekcja zapytań z programu Postman, pozwalająca przetestować
   stworzone API
 - [x] rozwiązanie powinno wykorzystywać zwykłe klasy Javowe do definicji obiektów transferu danych (DTO)
 

@@ -102,6 +102,92 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Generate report",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v1/trainings/report?yearMonth=2024-01",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"trainings",
+								"report"
+							],
+							"query": [
+								{
+									"key": "yearMonth",
+									"value": "2024-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create training",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": 4,\r\n  \"startTime\": \"2024-11-23T13:00:00\",\r\n  \"endTime\": \"2024-11-23T14:00:00\",\r\n  \"activityType\": \"RUNNING\",\r\n  \"distance\": 5.0,\r\n  \"averageSpeed\": 10.5\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/trainings",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"trainings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update training",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": 3,\r\n  \"startTime\": \"2024-11-23T90:30:00\",\r\n  \"endTime\": \"2024-11-23T11:45:00\",\r\n  \"activityType\": \"CYCLING\",\r\n  \"distance\": 15.2,\r\n  \"averageSpeed\": 25.0\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v1/trainings/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v1",
+								"trainings",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},

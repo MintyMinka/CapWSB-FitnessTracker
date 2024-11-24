@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.YearMonth;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -51,6 +53,13 @@ public class TrainingServiceImpl implements TrainingProvider, TrainingService {
     }
 
     @Override
+    public List<Training> findAllTrainingsByMonth(YearMonth yearMonth) {
+        Date startDate = Date.from(yearMonth.atDay(1).atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date endDate = Date.from(yearMonth.atEndOfMonth().atTime(23, 59, 59).atZone(ZoneId.systemDefault()).toInstant());
+
+        return trainingRepository.findByStartTimeBetween(startDate, endDate);
+    }
+
     public Training createTraining(Training training) {
 
         log.info("Creating training {}", training);

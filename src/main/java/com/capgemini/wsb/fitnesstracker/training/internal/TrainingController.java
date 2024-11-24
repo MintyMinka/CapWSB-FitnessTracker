@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.YearMonth;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ import java.util.Map;
 class TrainingController {
     private final TrainingServiceImpl trainingService;
     private final TrainingMapper trainingMapper;
+    private final ReportService reportService;
 
     private final TrainingService trainingServiceAPI;
 
@@ -52,6 +54,12 @@ class TrainingController {
                 toList();
     }
 
+    @PostMapping("/report")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void generateTrainingsReportForUsers(@RequestParam @DateTimeFormat(pattern = "yyyy-MM") YearMonth yearMonth) {
+        reportService.generateReport(yearMonth);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public TrainingDto addNewTraining(@RequestBody TrainingDtoUID training) {
@@ -75,9 +83,8 @@ class TrainingController {
     @PatchMapping("/{id}")
     public TrainingDto partiallyUpdateTraining(@PathVariable Long id, @RequestBody Map<String, Object> update) {
 
-        Training updatedTraining  = trainingServiceAPI.partiallyUpdateTraining(id, update);
+        Training updatedTraining = trainingServiceAPI.partiallyUpdateTraining(id, update);
 
-        return trainingMapper.toDto(updatedTraining );
+        return trainingMapper.toDto(updatedTraining);
     }
-
 }
